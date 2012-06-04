@@ -1,0 +1,7 @@
+Hello!
+{{view Ember.TextField valueBinding="symbol" placeholder="symbol"}}
+{{view Ember.TextField valueBinding="period" placeholder="period"}}
+%button.btn-primary{ :event => { :action => 'fetch' } } Fetch
+#graph
+
+    
