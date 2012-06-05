@@ -1,7 +1,48 @@
-Hello!
-{{view Ember.TextField valueBinding="symbol" placeholder="symbol"}}
-{{view Ember.TextField valueBinding="period" placeholder="period"}}
-%button.btn-primary{ :event => { :action => 'fetch' } } Fetch
-#graph
+.container
+  %h1 Trading Rule Settings
+  #slider
+  %form.form-inline
+    Symbol    
+    {{view Ember.TextField valueBinding="symbol" placeholder="symbol" class="input-small"}}
+    MA Period
+    {{view Ember.TextField valueBinding="period" placeholder="period" class="input-small"}}        
+    {{view Ember.TextField valueBinding="capital" placeholder="initial investment" class="input-small"}}
+    %button.btn-primary{ :type => "button", :event => { :action => 'fetch' } } Fetch  
+  
+  %h1 Results
+  %h3 Summary 
+  
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th $ Profit
+        %th % Profit
+        %th Trades
+        %th Profit Per Trade              
+      %tr
+        %td {{profit}}  
+        %td {{profitPercent}}  
+        %td {{tradeCount}}  
+        %td {{profitPerTrade}}  
+  %h3 Graph
+  #graph 
+  %h3 Trades 
+  %table.table
+    %thead
+      %tr
+        %th Open Date 
+        %th Open Price
+        %th Close Date
+        %th Close Price
+        %th Profit
+    {{#each trades}}
+    %tr
+      %td {{openDate}}  
+      %td.number {{openPrice}}  
+      %td {{closeDate}}  
+      %td.number {{closePrice}}  
+      %td.number {{profit}}  
+    {{/each}}
+  
 
     

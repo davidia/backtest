@@ -1,34 +1,46 @@
+
+
 window.Backtest.ruleController = Ember.Object.create(
-	fetch: ()-> 
-				t = this
-				$.get('closes',symbol: this.get('symbol'),(data)->					
-					prices = data['prices']
-					ma = t.sma(prices,t.get('period'))
-					g = d3.select("#graph").append("svg:svg").attr("width", "100%").attr("height", "100%");
-					x = d3.scale.linear().domain([0,prices.length ]).range([0, 600])
-					y = d3.scale.linear().domain([Math.min.apply(null, prices), Math.max.apply(null, prices)]).range([0, 300])
-					line = d3.svg.line().x((d,i)->return x(i)).y((d)->return y(d))		
-					g.append("svg:path").attr("d", line(prices))		
-					g.append("svg:path").attr("d", line(ma))
-					)
-	sma: (data,period) ->
-      workingSet = [];
-      results = [];
-      console.log(data)
-      console.log(period)
-      for n in data
-      	workingSet.push(n)
-      	if(workingSet.length > period)
-      		workingSet.shift()
-      	results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
-      return results
-	symbol: "GRPN"
-	period: 3
+  fetch: ()->       
+        $.get('closes',symbol: this.get('symbol'),(data)=>
+          ta = window.TA
+          prices = data['prices'].reverse()
+          parse = d3.time.format("%Y-%m-%d").parse;
+          rawdates = data['dates'].reverse()
+          dates = rawdates.map(parse)
+          ma = ta.sma(prices,this.get('period'))
+          this.set('trades',ta.xover(rawdates,prices,ma))
+
+          w0 = 960
+          h0 = 300
+          m = [20, 30, 20, 30]
+          w = w0 - m[1] - m[3]
+          h = h0 - m[0] - m[2]
+          
+          d3.select("svg").remove()
+
+          g = d3.select("#graph").append("svg:svg").attr("width", w0).attr("height", h0)
+            .append("svg:g").attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+          x = d3.time.scale().domain([dates[0],dates[dates.length-1] ]).range([0, w])
+          mx = Math.max.apply(null, prices)
+          mn = Math.min.apply(null, prices)
+          rng = mx-mn
+          margin = rng * 0.1
+
+          y = d3.scale.linear().domain([mx+margin,mn-margin]).nice().range([0, h])
+          line = d3.svg.line().x((d,i)->return x(dates[i])).y((d)->return y(d))    
+          
+          yAxis = d3.svg.axis().scale(y).ticks(6).orient("left");
+          xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true)
+
+          g.append("svg:g").attr("class", "y axis").attr("transform", "translate(" + 0 + ",0)").call(yAxis);
+          g.append("svg:g").attr("class", "x axis").attr("transform", "translate(0,"+h+")").call(xAxis);
+          
+          g.append("svg:path").attr("d", line(prices))    
+          g.append("svg:path").attr("d", line(ma)).attr("class", "ma")
+          )
+  symbol: "GRPN"
+  capital: 10000
+  trades: null
+  period: 10
 )
-
-# g.selectAll("line").data
-		# 
-		# yAxis = d3.svg.axis().scale(y).orient('left').tickSize(5).tickPadding(10);
-		# g.append('svg:g').attr('class', 'yTick').call(yAxis)
-
-

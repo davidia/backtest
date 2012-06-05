@@ -19,7 +19,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'jquery-ui-rails'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
@@ -43,3 +43,10 @@ gem "compass_twitter_bootstrap", :git => "git://github.com/vwall/compass-twitter
 gem "ember-rails"
 gem "haml-rails"
 gem "hamlbars" ,:git => 'git://github.com/jamesotron/hamlbars.git'
+
+
+group :development do
+  gem 'guard'
+  gem 'rack-livereload', :git => 'git://github.com/johnbintz/rack-livereload.git'
+  gem 'guard-livereload'
+end

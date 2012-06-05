@@ -20,39 +20,51 @@ Backtest.initialize(stateManager);
 
 
 view = Backtest.MainView.create(
-	controller: Backtest.ruleController
+  controller: Backtest.ruleController
 )
 
 window.TA =
-	sma: (data,period) ->
+  sma: (data,period) ->
       workingSet = [];
       results = [];
-      console.log(data)
-      console.log(period)
       for n in data
-      	workingSet.push(n)
-      	if(workingSet.length > period)
-      		workingSet.shift()
-      	results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
+        workingSet.push(n)
+        if(workingSet.length > period)
+          workingSet.shift()
+        results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
       return results
-    xover: (s1,s2) ->
-    	changes    	    
-    	states = _.zip(s1,s2).map (a)-> a[0] > a[1]
-    	s = states.shift
-    	i = 1
-    	states.reduce(
-    		(memo,e,i)->
-    			if(s != e)
-    				s=e
-    				memo.push(
-    					cross: s
-    					index: i
-    					)
-    		,[])
-    	
-console.log(view)
+    xover: (dates,prices,ma) ->     
+      states = _.zip(prices,ma).map (a)-> a[0] > a[1]      
+      position = 0      
+      trades = states.reduce(
+        (memo,e,i)->
+          if(position == 1 && !e)
+            position = 0
+            t = memo[memo.length-1]
+            t.closePrice = prices[i].toFixed(2)
+            t.closeDate = dates[i]
+            t.profit = (t.closePrice - t.openPrice).toFixed(2)
+          if(position != 1 && e)
+            position = 1
+            memo.push(
+              openPrice: prices[i].toFixed(2)
+              openDate: dates[i]              
+              )
+          return memo
+        ,[])
+      
+      #close out the last trade if it's still open
+      if(position == 1)
+        t = trades[trades.length-1]
+        t.closePrice = prices[prices.length-1]
+        t.closeDate = dates[prices.length-1]
+        t.profit = (t.closePrice - t.openPrice).toFixed(2)
+      return trades
+
+
 jQuery( ->
   stateManager.send('ready');
   view.append()
+  view.fetch()
 );
 

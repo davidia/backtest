@@ -9,6 +9,13 @@ GIT
       tilt
 
 GIT
+  remote: git://github.com/johnbintz/rack-livereload.git
+  revision: e51b347653614e3f4824b4f3565ac09dccd16940
+  specs:
+    rack-livereload (0.3.6)
+      rack
+
+GIT
   remote: git://github.com/vwall/compass-twitter-bootstrap.git
   revision: be734a5be9fb51a050dbb9876831bd29bfb3b079
   specs:
@@ -47,6 +54,7 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.2.8)
     arel (3.0.2)
     builder (3.0.0)
     chunky_png (1.2.5)
@@ -63,14 +71,26 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.2)
       compass (>= 0.12.0, < 0.14)
+    em-websocket (0.3.6)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
     ember-rails (0.5.0)
       active_model_serializers
       execjs (>= 1.2)
       railties (~> 3.1)
     erubis (2.7.0)
+    eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    ffi (1.0.11)
     fssm (0.2.9)
+    guard (1.0.3)
+      ffi (>= 0.5.0)
+      thor (>= 0.14.6)
+    guard-livereload (0.4.2)
+      em-websocket (>= 0.2.0)
+      guard (>= 0.10.0)
+      multi_json (~> 1.0)
     haml (3.1.6)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -83,6 +103,9 @@ GEM
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
+    jquery-ui-rails (0.4.1)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.3)
     libv8 (3.3.10.4)
     mail (2.4.4)
@@ -147,9 +170,13 @@ DEPENDENCIES
   compass-rails
   compass_twitter_bootstrap!
   ember-rails
+  guard
+  guard-livereload
   haml-rails
   hamlbars!
   jquery-rails
+  jquery-ui-rails
+  rack-livereload!
   rails (= 3.2.3)
   sass-rails (~> 3.2.3)
   sqlite3

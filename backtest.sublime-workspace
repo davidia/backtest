@@ -1,0 +1,765 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"back",
+				"background	background: color image repeat attachment position"
+			],
+			[
+				"white",
+				"whiteSmoke"
+			],
+			[
+				"no",
+				"none"
+			],
+			[
+				"bac",
+				"background	background-image: none"
+			],
+			[
+				"backgroun",
+				"background	background-image: url"
+			],
+			[
+				"Hi",
+				"HIGH"
+			],
+			[
+				"C",
+				"CLOSE"
+			],
+			[
+				"fea",
+				"feature"
+			],
+			[
+				"feate",
+				"features"
+			],
+			[
+				"P",
+				"PREV_RET_PNL_BOOST"
+			],
+			[
+				"fla",
+				"flatten"
+			],
+			[
+				"re",
+				"reduce"
+			],
+			[
+				"all",
+				"all_trades"
+			],
+			[
+				"trad",
+				"trade_count"
+			],
+			[
+				"r",
+				"reduce"
+			],
+			[
+				"sor",
+				"sorted_dates"
+			],
+			[
+				"mi",
+				"minute_data_file"
+			],
+			[
+				"minut",
+				"minute_data_file"
+			],
+			[
+				"min_",
+				"minute_data_file"
+			],
+			[
+				"mint",
+				"minute_data"
+			],
+			[
+				"in",
+				"inj	inject(init) { |mem, var| .. }"
+			],
+			[
+				"la",
+				"last_c"
+			],
+			[
+				"min",
+				"min	min { |a, b| .. }"
+			],
+			[
+				"EN",
+				"ENTER_TIME"
+			],
+			[
+				"rep",
+				"report"
+			],
+			[
+				"ex",
+				"exit_side"
+			],
+			[
+				"star",
+				"startTime"
+			],
+			[
+				"ret",
+				"returns"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/assets/javascripts/backtest.js.coffee",
+			"settings":
+			{
+				"buffer_size": 1413,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/controllers/rule_controller.js.coffee",
+			"settings":
+			{
+				"buffer_size": 1185,
+				"line_ending": "Unix",
+				"name": "window.Backtest.RuleController = Ember.Object.crea"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/views/main_view.js.coffee",
+			"settings":
+			{
+				"buffer_size": 228,
+				"line_ending": "Unix",
+				"name": "var view = Ember.View.create({"
+			}
+		},
+		{
+			"contents": "",
+			"file": "app/assets/javascripts/views/form_view.js.coffee",
+			"file_size": 186,
+			"file_write_time": 1338845033000000,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix",
+				"name": "form_view.js.coffee"
+			}
+		},
+		{
+			"contents": "",
+			"file": "app/assets/javascripts/templates/form.js.hamlbars",
+			"file_size": 206,
+			"file_write_time": 1338845432000000,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/backtest_controller.rb",
+			"settings":
+			{
+				"buffer_size": 658,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/application.js.coffee",
+			"settings":
+			{
+				"buffer_size": 225,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/application.css.sass",
+			"settings":
+			{
+				"buffer_size": 140,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/david/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 243,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/templates/mainview.js.hamlbars",
+			"settings":
+			{
+				"buffer_size": 253,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 57.0,
+		"selected_items":
+		[
+			[
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pci",
+				"Package Control: Install Package"
+			],
+			[
+				"PC",
+				"Package Control: Enable Package"
+			],
+			[
+				"Pack",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"upg",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"up",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"paca",
+				"Package Control: Discover Packages"
+			]
+		],
+		"width": 579.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": true,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/david/web/backtest/app/assets/javascripts/templates/mainview.js.hamlbars",
+		"/home/david/web/backtest/app/assets/stylesheets/backtest.css.scss",
+		"/home/david/web/backtest/app/assets/javascripts/glob.js",
+		"/home/david/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/david/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/david/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
+		"/home/david/web/backtest/app/assets/javascripts/backtest.js.coffee",
+		"/home/david/.config/sublime-text-2/Packages/User/Plain text.sublime-settings",
+		"/home/david/.config/sublime-text-2/Packages/User/Package Control.sublime-settings",
+		"/home/david/web/backtest/app/assets/javascripts/ENV.VIEW_PRESERVES_CONTEXT = true",
+		"/home/david/web/backtest/app/assets/javascripts/application.js.coffee",
+		"/home/david/web/backtest/config/application.rb",
+		"/home/david/web/backtest/app/assets/javascripts/templates/mainview.handlebars",
+		"/home/david/web/backtest/config/initializers/hamlbars.rb",
+		"/home/david/web/mabt/app/controllers/backtest_controller.rb",
+		"/home/david/web/backtest/app/assets/javascripts/views/form.hamlbars",
+		"/home/david/web/backtest/app/assets/javascripts/backtest.js",
+		"/home/david/web/backtest/app/assets/javascripts/application.js",
+		"/home/david/web/mabt/app/assets/javascripts/backtest.js.coffee",
+		"/home/david/web/mabt/app/assets/javascripts/application.js.coffee",
+		"/home/david/web/mabt/app/views/layouts/application.html.haml",
+		"/home/david/web/mabt/app/views/backtest/index.html.haml",
+		"/home/david/web/mabt/config/routes.rb",
+		"/home/david/web/mabt/app/assets/javascripts/mabt.js",
+		"/home/david/web/mabt/Gemfile",
+		"/home/david/web/mabt/config/application.rb",
+		"/home/david/web/mabt/app/assets/javascripts/pointsView.js.hamlbars",
+		"/home/david/web/mabt/app/assets/javascripts/views/application_view.js",
+		"/home/david/web/mabt/app/assets/javascripts/models/Point.js.coffee",
+		"/home/david/web/mabt/app/assets/javascripts/application.js",
+		"/home/david/web/am2/app/views/layouts/site.html.haml",
+		"/home/david/web/am2/app/views/site/index.html.haml",
+		"/home/david/web/am2/app/views/layouts/application.html.erb",
+		"/home/david/trading/mindthegap/--2012-04-16 13",
+		"/home/david/activefeed/gapTable.rb",
+		"/home/david/activefeed/gapTrade.rb",
+		"/home/david/activefeed/getsp500.sh",
+		"/home/david/activefeed/bigDownload.rb",
+		"/home/david/activefeed/gapSearch.rb",
+		"/home/david/activefeed/gapPlot.rb",
+		"/home/david/activefeed/daily.sh",
+		"/home/david/activefeed/sp500sym.txt",
+		"/home/david/trading/crossx/download.awk",
+		"/home/david/trading/crossx/extract_close.awk",
+		"/home/david/trading/crossx/prepare.rb",
+		"/home/david/trading/crossx/split.sh",
+		"/home/david/trading/crossx/plot",
+		"/home/david/trading/crossx/test.sd",
+		"/home/david/trading/crossx/grid.py",
+		"/home/david/activefeed/download.sh",
+		"/home/david/activefeed/getOpen.sh",
+		"/home/david/ruby/tweet-recover/bin/tweetrecover.rb",
+		"/home/david/activefeed/getGapDetail.sh",
+		"/home/david/activefeed/sp500",
+		"/home/david/activefeed/data/VEA-vs-EFA",
+		"/home/david/trading/crossx/libsvm-3.12/tools/test.dat.predict",
+		"/home/david/trading/crossx/libsvm-3.12/tools/train.dat.scale.out",
+		"/home/david/trading/crossx/test.dat",
+		"/home/david/trading/crossx/data/djret",
+		"/home/david/trading/crossx/DJ30components",
+		"/home/david/trading/crossx/inputs/predict",
+		"/home/david/trading/crossx/libsvm-3.12/tools/grid.py",
+		"/home/david/trading/crossx/libsvm-3.12.tar.gz",
+		"/home/david/ruby/keywordscan/negative.rb",
+		"/var/www/amadmin/fuel/packages/orm/classes/query.php",
+		"/var/www/amadmin/app/classes/controller/leads.php",
+		"/var/www/amadmin/app/views/reports/index.php",
+		"/var/www/amadmin/app/classes/notifier.php",
+		"/var/www/amadmin/app/classes/controller/reports.php",
+		"/var/www/amadmin/public/assets/css/style.css",
+		"/var/www/amadmin/fuel/core/classes/database/connection.php",
+		"/var/www/amadmin/app/views/site/cb_formcode.php",
+		"/var/www/amadmin/app/views/leads/create.php",
+		"/var/www/amadmin/app/classes/controller/site.php",
+		"/var/www/amadmin/app/classes/controller/statements.php",
+		"/var/www/amadmin/fuel/core/classes/email.php",
+		"/var/www/amadmin/fuel/core/classes/email/driver.php",
+		"/var/www/amadmin/app/classes/controller/secure.php",
+		"/var/www/amadmin/app/migrations/007_add_commission_pending_to_leads.php",
+		"/var/www/amadmin/app/classes/model/lead.php",
+		"/var/www/amadmin/app/config/config.php",
+		"/var/www/amadmin/fuel/core/classes/database/query.php",
+		"/var/www/amadmin/public/assets/css/styles.css",
+		"/var/www/amadmin/app/views/site/template.php",
+		"/home/david/fuel/orm/classes/query.php",
+		"/home/david/Downloads/jquery.simpletip-1.3.1.js",
+		"/var/www/amadmin/app/classes/controller/service.php",
+		"/var/www/amadmin/.gitmodules",
+		"/var/www/amadmin/app/config/auth.php",
+		"/var/www/amadmin/app/migrations/002_create_leads.php",
+		"/var/www/amadmin/app/views/template.php",
+		"/var/www/amadmin/public/assets/js/json2.js",
+		"/var/www/X/index.html",
+		"/home/david/ctasa/.htaccess",
+		"/var/www/feedbkr/config/environments/development.rb",
+		"/var/www/feedbkr/config/environments/production.rb",
+		"/var/www/feedbkr/config/application.rb",
+		"/var/www/feedbkr/app/models/user.rb",
+		"/var/www/feedbkr/config/routes.rb",
+		"/var/www/feedbkr/app/views/layouts/application.html.haml",
+		"/var/www/feedbkr/config/mongoid.yml",
+		"/var/www/feedbkr/db/seeds.rb",
+		"/var/www/amadmin/app/migrations/003_create_leadhistories.php",
+		"/var/www/feedbkr/config.ru",
+		"/var/www/feedbkr/app/views/devise/registrations/new.html.haml",
+		"/var/www/feedbkr/app/views/devise/registrations/edit.html.haml",
+		"/var/www/feedbkr/app/views/devise/menu/_login_items.html.haml",
+		"/var/www/feedbkr/app/views/devise/menu/_registration_items.html.haml",
+		"/var/www/feedbkr/app/views/devise/menu/_registration_items.html.erb",
+		"/var/www/feedbkr/app/controllers/home_controller.rb",
+		"/var/www/feedbkr/app/views/home/index.html.haml",
+		"/var/www/feedbkr/app/controllers/users_controller.rb",
+		"/var/www/feedbkr/app/views/users/show.html.haml",
+		"/home/david/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
+		"/var/www/feedbkr/app/views/layouts/application.html.erb",
+		"/var/www/feedbkr/app/assets/stylesheets/application.css",
+		"/var/www/feedbkr/app/views/devise/registrations/new.html.erb",
+		"/var/www/feedbkr/app/views/devise/registrations/edit.html.erb"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			";}",
+			"GPS",
+			"res",
+			"minute_data_file",
+			"r",
+			"end",
+			"\\t.*",
+			"best_c",
+			"\\t.*",
+			".*",
+			"alter_fields",
+			"recipients"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			"\\t"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 9,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/assets/javascripts/backtest.js.coffee",
+					"settings":
+					{
+						"buffer_size": 1413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								820,
+								820
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 96.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/assets/javascripts/controllers/rule_controller.js.coffee",
+					"settings":
+					{
+						"buffer_size": 1185,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								984,
+								970
+							]
+						],
+						"settings":
+						{
+							"auto_name": "window.Backtest.RuleController = Ember.Object.crea",
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/assets/javascripts/views/main_view.js.coffee",
+					"settings":
+					{
+						"buffer_size": 228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								224,
+								224
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var view = Ember.View.create({",
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/assets/javascripts/views/form_view.js.coffee",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "form_view.js.coffee",
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/assets/javascripts/templates/form.js.hamlbars",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/controllers/backtest_controller.rb",
+					"settings":
+					{
+						"buffer_size": 658,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								588,
+								588
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/assets/javascripts/application.js.coffee",
+					"settings":
+					{
+						"buffer_size": 225,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								78,
+								78
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/Syntaxes/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/assets/stylesheets/application.css.sass",
+					"settings":
+					{
+						"buffer_size": 140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								108,
+								108
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby Haml.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/david/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								75,
+								75
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/assets/javascripts/templates/mainview.js.hamlbars",
+					"settings":
+					{
+						"buffer_size": 253,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								253,
+								253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 342.0,
+	"status_bar_visible": true
+}

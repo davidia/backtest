@@ -1,4 +1,16 @@
 Backtest::Application.configure do
+ 
+  config.middleware.insert_before(Rack::Lock, Rack::LiveReload,:no_swf => true)
+  # config.middleware.insert_before(
+  #   Rack::Lock, Rack::LiveReload,
+  #   :min_delay => 500,
+  #   :max_delay => 10000,
+  #   :port => 35729,
+  #   :host => 'localhost',
+  #   :ignore => [ %r{dont/modify\.html$} ]
+  # )
+
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
