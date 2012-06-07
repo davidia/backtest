@@ -33,8 +33,8 @@ window.TA =
           workingSet.shift()
         results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
       return results
-    xover: (dates,prices,ma) ->     
-      states = _.zip(prices,ma).map (a)-> a[0] > a[1]      
+    xover: (dates,prices,ma1,ma2) ->     
+      states = _.zip(ma1,ma2).map (a)-> a[0] > a[1]      
       position = 0      
       trades = states.reduce(
         (memo,e,i)->
@@ -61,10 +61,10 @@ window.TA =
         t.profit = (t.closePrice - t.openPrice).toFixed(2)
       return trades
 
-
-jQuery( ->
-  stateManager.send('ready');
+$(document).ready ->
+  stateManager.send('ready')
   view.append()
   view.fetch()
-);
+
+
 

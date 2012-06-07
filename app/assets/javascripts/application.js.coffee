@@ -4,7 +4,8 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.slider
+//= require ui1
+
 
 //= require underscore
 //= require init
