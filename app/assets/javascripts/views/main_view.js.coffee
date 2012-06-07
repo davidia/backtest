@@ -8,6 +8,8 @@ window.Backtest.MainView = Ember.View.extend(
   tradesBinding: 'controller.trades'
   capitalBinding: 'controller.capital'
 
+  yearsBinding: 'controller.years'
+
  
   profit: Ember.computed( ->
     trades = this.get('trades')
@@ -21,7 +23,7 @@ window.Backtest.MainView = Ember.View.extend(
   profitPercent: Ember.computed( ->
     profit = this.get('profit')
     capital = this.get('capital')
-    return Math.round(100*profit/capital) + "%"
+    return if profit? then (100*profit/capital).toFixed(1) + "%" else ""
   ).property('profit','capital') 
 
   tradeCount: Ember.computed( ->
@@ -33,7 +35,7 @@ window.Backtest.MainView = Ember.View.extend(
   profitPerTrade: Ember.computed( ->
     tradeCount = this.get('tradeCount')
     profit = this.get('profit')
-    return profit / tradeCount
+    return  if profit? then (profit / tradeCount).toFixed(2) else ""
   ).property('profit','tradeCount') 
    
   fetch: () -> this.get('controller').fetch()

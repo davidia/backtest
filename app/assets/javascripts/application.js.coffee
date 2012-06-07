@@ -6,7 +6,7 @@
 //= require jquery_ujs
 //= require ui1
 
-
+//= require bootstrap
 //= require underscore
 //= require init
 

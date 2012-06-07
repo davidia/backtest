@@ -2,7 +2,7 @@
 
 window.Backtest.ruleController = Ember.Object.create(
   fetch: ()->       
-        $.get('closes',symbol: this.get('symbol'),(data)=>
+        $.get('closes',{symbol: this.get('symbol'),years: this.get('years')},(data)=>
 
           
 
@@ -62,6 +62,7 @@ window.Backtest.ruleController = Ember.Object.create(
   trades: null
   ma1: 7
   ma2: 15
+  years: 1
  
   ma1Changed: Ember.observer( () ->
       @simulate()
