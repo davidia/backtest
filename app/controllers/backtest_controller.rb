@@ -28,6 +28,6 @@ class BacktestController < ApplicationController
       prices << elems[6].to_f     
     }
 
-    render json: {dates: dates,prices: prices}
+    render json: {dates: dates.reverse,prices: prices.reverse}
   end
 end

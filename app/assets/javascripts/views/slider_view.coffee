@@ -42,16 +42,17 @@ window.Backtest.JQWidget = Em.Mixin.create(
 window.Backtest.SliderView = Em.View.extend(window.Backtest.JQWidget,
   uiType: "slider"
   min: 1
-  max: 100
+  max: 100 
+  range: true
   #softMin: null
-  uiOptions: ["value", "min", "max" ]
+  uiOptions: ["values", "min", "max","range" ]
   uiEvents: [ "slide" ]  
   tagName: "div"
   slide: ( event, ui ) ->
-    v = ui.value 
+    v = ui.values 
     # softMin = @get('softMin')
     # if(softMin && v <= softMin )
     #   v=softMin
-    @set('value',v)
+    @set('values',v)
 )
 

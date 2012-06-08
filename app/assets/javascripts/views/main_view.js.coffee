@@ -3,10 +3,29 @@ window.Backtest.MainView = Ember.View.extend(
   templateName: 'templates/mainview'
   controller: null
   symbolBinding: 'controller.symbol'
-  ma1Binding: 'controller.ma1'
-  ma2Binding: 'controller.ma2'
+  
+  ma1: Ember.computed( (key, value) ->
+    if arguments.length == 1
+      @mas[0]
+    else
+      if !isNaN(v=parseInt(value))
+        @set("mas",[v , @mas[1]])
+  ).property('mas.@each')
+
+  ma2: Ember.computed( (key, value) ->
+    if arguments.length == 1
+      @mas[1]
+    else
+      if !isNaN(v=parseInt(value))
+        @set("mas",[@mas[0],v])
+  ).property('mas.@each')
+  masBinding: 'controller.mas'
+
+  
   tradesBinding: 'controller.trades'
   capitalBinding: 'controller.capital'
+
+
 
   yearsBinding: 'controller.years'
 
@@ -15,8 +34,12 @@ window.Backtest.MainView = Ember.View.extend(
     trades = this.get('trades')
     capital = this.get('capital')
     if ! trades? then return null
-    return Math.round( trades.reduce(
-        (s,t)-> s * (t.closePrice/t.openPrice)
+    return Math.round( trades.reduce((s,t) -> 
+        if t.direction == "Buy"  
+          pf = t.closePrice/t.openPrice
+        else
+          pf = 2 - t.closePrice/t.openPrice
+        s * (t.closePrice/t.openPrice)
       ,capital) - capital)
   ).property('trades.@each.profit','capital') 
 

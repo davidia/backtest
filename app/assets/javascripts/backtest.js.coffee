@@ -23,7 +23,22 @@ view = Backtest.MainView.create(
   controller: Backtest.ruleController
 )
 
+class Trade
+  constructor: (direction,i,d,p) ->
+      @direction = direction
+      @openPrice = p[i].toFixed(2)
+      @openDate = d[i]              
+      @openIndex = i  
+      @sign = (if @direction == "Buy" then 1 else -1)
+  close: (i,d,p) ->
+    @closeIndex = i
+    @closeData = d[i]
+    @closePrice = p[i].toFixed(2)
+    @profit = (@sign * (@closePrice - @openPrice)).toFixed(2)
+
 window.TA =
+
+
   sma: (data,period) ->
       workingSet = [];
       results = [];
@@ -33,32 +48,25 @@ window.TA =
           workingSet.shift()
         results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
       return results
-    xover: (dates,prices,ma1,ma2) ->     
-      states = _.zip(ma1,ma2).map (a)-> a[0] > a[1]      
+    xover: (dates,prices,ma1,ma2,long = true,short = false) ->     
+      states = _.zip(ma1,ma2).map((a) -> if a[0] > a[1] then 1 else -1 )
       position = 0      
       trades = states.reduce(
-        (memo,e,i)->
-          if(position == 1 && !e)
+        (memo,e,i)=>
+          if(position != 0 && position != e)
             position = 0
             t = memo[memo.length-1]
-            t.closePrice = prices[i].toFixed(2)
-            t.closeDate = dates[i]
-            t.profit = (t.closePrice - t.openPrice).toFixed(2)
-          if(position != 1 && e)
-            position = 1
-            memo.push(
-              openPrice: prices[i].toFixed(2)
-              openDate: dates[i]              
-              )
+            t.close(i,dates,prices)            
+          if (position == 0 && (if e == 1 then long else short))
+            position = e            
+            memo.push(new Trade((if e == 1 then "Buy" else "Sell"),i,dates,prices))
           return memo
         ,[])
       
       #close out the last trade if it's still open
-      if(position == 1)
+      if(position != 0)
         t = trades[trades.length-1]
-        t.closePrice = prices[prices.length-1]
-        t.closeDate = dates[prices.length-1]
-        t.profit = (t.closePrice - t.openPrice).toFixed(2)
+        t.close(prices.length-1,dates,prices)            
       return trades
 
 $(document).ready ->

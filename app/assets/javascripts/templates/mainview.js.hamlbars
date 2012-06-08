@@ -16,46 +16,37 @@
           {{view Backtest.ButtonView label="4Y"  val=4}}          
           {{view Backtest.ButtonView label="5Y"  val=5}}          
     .row      
-      .span5
+      .span4
         %form.form-inline
-          .row      
-            .span1
-              MA1
-            .span2
-              {{view Backtest.SliderView valueBinding="ma1" class="slider"}}
-            .span2.input-append
-              =succeed "<span class='add-on'>days</span>" do
-                {{view Ember.TextField id="ma1" valueBinding="ma1"  placeholder="MA1" class="input-mini"}}
-              
-      .span6
-        .row
-          %form.form-inline
-            .span1
-              %label.checkbox BankRoll
-            .span2.input-prepend              
-              =precede "<span class='add-on'>$</span>" do     
-                {{view Ember.TextField valueBinding="capital" placeholder="initial investment" class="input-mini"}}
+          {{view Backtest.SliderView valuesBinding="mas" class="slider"}}                          
+      %form.form-inline
+        .span1
+          %label.checkbox BankRoll
+        .span2.input-prepend              
+          =precede "<span class='add-on'>$</span>" do     
+            {{view Ember.TextField valueBinding="capital" placeholder="initial investment" class="input-mini"}}
       
     .row
-      .span5
-        %form.form-inline
-          .row      
-            .span1
-              MA2
-            .span2
-              {{view Backtest.SliderView valueBinding="ma2" class="slider"}}
-            .span2.input-append
-              =succeed "<span class='add-on'>days</span>" do
-                {{view Ember.TextField id="ma2"  valueBinding="ma2" placeholder="MA2" class="input-mini"}}              
+      %form.form-inline                     
+        .span2.input-append.input-prepend  
+          =surround "<span class='add-on'>Short</span>" , "<span class='add-on'>days</span>" do
+            {{view Ember.TextField id="ma1" valueBinding="ma1" placeholder="MA1" class="input-tini ma1"}}
+       
+        .span2.input-append.input-prepend  
+          .flr
+            =surround "<span class='add-on'>Long</span>" , "<span class='add-on'>days</span>" do
+              {{view Ember.TextField id="ma2"  valueBinding="ma2" classNames="ma2" placeholder="MA2" class="input-tini"}}              
       .span6
         .row
           %form.form-inline
             .span1
               %label.checkbox
-                %input{type: "checkbox"} Long        
+                {{view Ember.Checkbox checkedBinding="controller.long"}}
+                Long        
             .span1
               %label.checkbox
-                %input{type: "checkbox"} Short
+                {{view Ember.Checkbox checkedBinding="controller.short"}}
+                Short
   %h3 Results
   %table.table.table-bordered
     %thead
