@@ -32,9 +32,11 @@ class Trade
       @sign = (if @direction == "Buy" then 1 else -1)
   close: (i,d,p) ->
     @closeIndex = i
-    @closeData = d[i]
+    @closeDate = d[i]
     @closePrice = p[i].toFixed(2)
     @profit = (@sign * (@closePrice - @openPrice)).toFixed(2)
+    @return = @profit / @openPrice
+    @dispReturn = @return.toFixed(2)
 
 window.TA =
 
@@ -48,11 +50,12 @@ window.TA =
           workingSet.shift()
         results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
       return results
-    xover: (dates,prices,ma1,ma2,long = true,short = false) ->     
+    xover: (burnin,dates,prices,ma1,ma2,long = true,short = false) ->     
       states = _.zip(ma1,ma2).map((a) -> if a[0] > a[1] then 1 else -1 )
       position = 0      
       trades = states.reduce(
         (memo,e,i)=>
+          if i < burnin then return memo
           if(position != 0 && position != e)
             position = 0
             t = memo[memo.length-1]
@@ -71,8 +74,9 @@ window.TA =
 
 $(document).ready ->
   stateManager.send('ready')
-  view.append()
+  view.appendTo('#main')
   view.fetch()
+  
 
 
 

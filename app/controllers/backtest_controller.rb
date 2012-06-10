@@ -18,10 +18,9 @@ class BacktestController < ApplicationController
 
   def closes
     symbol = params[:symbol]
-    years = params[:years]
     dates = []
     prices = []
-    rows = open(yahoo_url(symbol,years)).readlines
+    rows = open(yahoo_url(symbol,6)).readlines
     rows.drop(1).each { |row| 
       elems = row.chomp.split(',')
       dates << elems[0]

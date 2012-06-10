@@ -1,80 +1,87 @@
-.container
-  %h1 Trading Rule Settings
-  .settings.well
-    .row      
-      .span1  
-        Symbol
-      .span4.input-append
-        %form.form-search
-          =succeed Haml::Engine.new('%button.btn.btn-primary{ :type => "button", :event => { :action =>"fetch" } } Get Data').render do
-            {{view Ember.TextField valueBinding="symbol" placeholder="symbol" class="input-mini"}}         
-      .span6
-        .btn-group{:'data-toggle' => "buttons-radio"}          
-          {{view Backtest.ButtonView label="1Y" class="active" val=1}}          
-          {{view Backtest.ButtonView label="2Y"  val=2}}          
-          {{view Backtest.ButtonView label="3Y"  val=3}}          
-          {{view Backtest.ButtonView label="4Y"  val=4}}          
-          {{view Backtest.ButtonView label="5Y"  val=5}}          
-    .row      
-      .span4
-        %form.form-inline
-          {{view Backtest.SliderView valuesBinding="mas" class="slider"}}                          
+%h1 Trading Rule Settings
+.settings.well
+  .row      
+    .span1  
+      Symbol
+    .span4.input-append
+      %form.form-search
+        =succeed Haml::Engine.new('%button.btn.btn-primary{ :type => "button", :event => { :action =>"fetch" } } Get Data').render do
+          {{view Ember.TextField valueBinding="symbol" placeholder="symbol" class="input-mini"}}         
+    .span6
+      .btn-group{:'data-toggle' => "buttons-radio"}          
+        {{view Backtest.ButtonView label="1Y" class="active" val=1}}          
+        {{view Backtest.ButtonView label="2Y"  val=2}}          
+        {{view Backtest.ButtonView label="3Y"  val=3}}          
+        {{view Backtest.ButtonView label="4Y"  val=4}}          
+        {{view Backtest.ButtonView label="5Y"  val=5}}          
+  .row      
+    .span4
       %form.form-inline
-        .span1
-          %label.checkbox BankRoll
-        .span2.input-prepend              
-          =precede "<span class='add-on'>$</span>" do     
-            {{view Ember.TextField valueBinding="capital" placeholder="initial investment" class="input-mini"}}
-      
-    .row
-      %form.form-inline                     
-        .span2.input-append.input-prepend  
-          =surround "<span class='add-on'>Short</span>" , "<span class='add-on'>days</span>" do
-            {{view Ember.TextField id="ma1" valueBinding="ma1" placeholder="MA1" class="input-tini ma1"}}
-       
-        .span2.input-append.input-prepend  
-          .flr
-            =surround "<span class='add-on'>Long</span>" , "<span class='add-on'>days</span>" do
-              {{view Ember.TextField id="ma2"  valueBinding="ma2" classNames="ma2" placeholder="MA2" class="input-tini"}}              
-      .span6
-        .row
-          %form.form-inline
-            .span1
-              %label.checkbox
-                {{view Ember.Checkbox checkedBinding="controller.long"}}
-                Long        
-            .span1
-              %label.checkbox
-                {{view Ember.Checkbox checkedBinding="controller.short"}}
-                Short
-  %h3 Results
-  %table.table.table-bordered
-    %thead
-      %tr
-        %th $ Profit
-        %th % Profit
-        %th Trades
-        %th Profit Per Trade              
-      %tr
-        %td {{profit}}  
-        %td {{profitPercent}}  
-        %td {{tradeCount}}  
-        %td {{profitPerTrade}}  
-  #graph   
+        {{view Backtest.SliderView valuesBinding="mas" slidingBinding="sliding" class="slider"}}                          
+    %form.form-inline
+      .span1
+        %label.checkbox BankRoll
+      .span2.input-prepend              
+        =precede "<span class='add-on'>$</span>" do     
+          {{view Ember.TextField valueBinding="capital" placeholder="initial investment" class="input-mini"}}
+    
+  .row
+    %form.form-inline                     
+      .span2.input-append.input-prepend  
+        =surround "<span class='add-on'>Short</span>" , "<span class='add-on'>days</span>" do
+          {{view Ember.TextField id="ma1" valueBinding="ma1" placeholder="MA1" class="input-tini ma1"}}
+     
+      .span2.input-append.input-prepend  
+        .flr
+          =surround "<span class='add-on'>Long</span>" , "<span class='add-on'>days</span>" do
+            {{view Ember.TextField id="ma2"  valueBinding="ma2" classNames="ma2" placeholder="MA2" class="input-tini"}}              
+    .span6
+      .row
+        %form.form-inline
+          .span1
+            %label.checkbox
+              {{view Ember.Checkbox checkedBinding="controller.long"}}
+              Long        
+          .span1
+            %label.checkbox
+              {{view Ember.Checkbox checkedBinding="controller.short"}}
+              Short
+%h3 Results
+%table.table.table-bordered
+  %thead
+    %tr
+      %th $ Profit
+      %th % Profit
+      %th Trades
+      %th Profit Per Trade              
+    %tr
+      %td {{profit}}  
+      %td {{profitPercent}}  
+      %td {{tradeCount}}  
+      %td {{profitPerTrade}}  
+
+#graph
+
+#tradeList
+  {{#unless sliding}}
   %table.table
     %thead
       %tr
+        %th
         %th Open Date 
-        %th Open Price
         %th Close Date
-        %th Close Price
-        %th Profit
+        %th.number Open Price
+        %th.number Close Price
+        %th.number Profit
+        %th.number Return
     {{#each trades}}
     %tr
+      %td {{direction}}  
       %td {{openDate}}  
-      %td.number {{openPrice}}  
       %td {{closeDate}}  
+      %td.number {{openPrice}}        
       %td.number {{closePrice}}  
       %td.number {{profit}}  
-    {{/each}}
-
+      %td.number {{dispReturn}}%  
+    {{/each}} 
+  {{/unless}}  

@@ -46,8 +46,15 @@ window.Backtest.SliderView = Em.View.extend(window.Backtest.JQWidget,
   range: true
   #softMin: null
   uiOptions: ["values", "min", "max","range" ]
-  uiEvents: [ "slide" ]  
+  uiEvents: [ "slide","start","stop" ]  
   tagName: "div"
+  sliding: false
+
+  start: ( event, ui ) -> @set('sliding',true)
+  stop: ( event, ui ) -> @set('sliding',false)
+
+
+
   slide: ( event, ui ) ->
     v = ui.values 
     # softMin = @get('softMin')
