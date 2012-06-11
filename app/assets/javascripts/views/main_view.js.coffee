@@ -4,9 +4,11 @@ window.Backtest.MainView = Ember.View.extend(
   controller: null
   symbolBinding: 'controller.symbol'
   
-  didInsertElement: -> $('form').submit( ->false)
+  didInsertElement: -> 
+    $('form').submit( ->false)
 
-  ma1: Ember.computed( (key, value) ->
+
+  ma0: Ember.computed( (key, value) ->
     if arguments.length == 1
       @mas[0]
     else
@@ -14,15 +16,13 @@ window.Backtest.MainView = Ember.View.extend(
         @set("mas",[v , @mas[1]])
   ).property('mas.@each')
 
-  ma2: Ember.computed( (key, value) ->
+  ma1: Ember.computed( (key, value) ->
     if arguments.length == 1
       @mas[1]
     else
       if !isNaN(v=parseInt(value))
         @set("mas",[@mas[0],v])
   ).property('mas.@each')
-
-
 
   masBinding: 'controller.mas'
 
@@ -33,6 +33,8 @@ window.Backtest.MainView = Ember.View.extend(
   
 
   sliding:false
+
+  highlightTrade: alert
  
   profit: Ember.computed( ->
     trades = this.get('trades')
@@ -41,7 +43,7 @@ window.Backtest.MainView = Ember.View.extend(
     return Math.round( trades.reduce((s,t) ->         
         s * (1 + t.return)
       ,capital) - capital)
-  ).property('trades.@each.profit','capital') 
+  ).property('trades','capital') 
 
   profitPercent: Ember.computed( ->
     profit = this.get('profit')
@@ -53,19 +55,25 @@ window.Backtest.MainView = Ember.View.extend(
     trades = this.get('trades')
     if ! trades? then return null
     return trades.length
-  ).property('trades.@each') 
+  ).property('trades') 
+
+  winners: Ember.computed( ->    
+    trades = this.get('trades')
+    if ! trades? then return null
+    winners = trades.filter( (t) -> t.profit > 0).length
+    (100 * winners / trades.length).toFixed(2)
+  ).property('trades') 
 
   profitPerTrade: Ember.computed( ->
     tradeCount = this.get('tradeCount')
     profit = this.get('profit')
     return  if profit? then (profit / tradeCount).toFixed(2) else ""
   ).property('profit','tradeCount') 
-   
-  showTrades: ->
-    view = Backtest.TradeListView.create(
-      controller: @controller
-      tradesBinding: 'controller.trades'
-    ).appendTo('#tradeList')
+  
+
+  symbolKeyDown: (evt) ->
+    if evt.keyCode == 13
+      this.get('parentView').fetch()
 
   fetch: () -> this.get('controller').fetch()
 )

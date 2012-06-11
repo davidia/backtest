@@ -3,34 +3,60 @@
 @import 'bootstrap'
 
 
+$buy-color: #336FD4
+$sell-color: #FF2B2B
+
+$axis-color: lightgrey
+$price: 7A7664
+$ma0: #E0CD1B
+$ma1: #8723D9
+
 path
   stroke: grey
   stroke-width: 1
   fill: none
 
+.actions button
+  margin-top: 3px
+  margin-bottom: 3px
+
+.l
+  margin-bottom: 5px
+
+.l2
+  margin-top: 5px
+
+.m1-handle
+  background-color: lighten($ma1, 40%)
+
+.m0-handle
+  background-color: lighten($ma0, 40%)
 
 .buy
-  stroke: blue
+  stroke: $buy-color
 .sell
-  stroke: red
+  stroke: $sell-color
 
 .ma1
-  stroke: rgba(0,180,180,0.8)
+  stroke: $ma1
 
 .flr
   float: right
 
-#ma2
-  background-color: rgba(180,180,0,0.2)
-
 #ma1
-  background-color: rgba(180,180,180,0.2)
+  background-color: lighten($ma1, 40%)
+
+#ma0
+  background-color: lighten($ma0, 40%)
 
 .ma0
-  stroke: rgba(180,180,0,0.8)
+  stroke: $ma0
 
 #graph
   height: 300px
+#tradeList
+  height: 250px
+  overflow-y: auto
 
 
 .axis 
@@ -38,7 +64,7 @@ path
 
 
 .x.axis line 
-  stroke: #CCC
+  stroke: $axis-color
   stroke-opacity: .5
 
 
@@ -46,15 +72,13 @@ path
   display: none
 
 
-.x.axis path 
-  
-.y.axis line, .y.axis path 
+.x.axis path, .y.axis line, .y.axis path 
   fill: none
-  stroke: #000
+  stroke: $axis-color
 
 
 td.number  
-  text-align: right  
+  text-align: center  
 
 
 form.form-inline
@@ -70,4 +94,16 @@ html
   width: 30px
   text-align: center
 
-  
+.input-vsmall
+  width: 40px
+  text-align: center
+
+
+.Buy .dir
+  color: $buy-color
+
+.Sell .dir
+  color: $sell-color
+
+path.selected
+  stroke-width: 3

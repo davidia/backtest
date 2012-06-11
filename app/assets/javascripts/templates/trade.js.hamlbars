@@ -1,0 +1,7 @@
+%td.dir {{direction}}  
+%td {{view.content.openDate}}  
+%td {{view.content.closeDate}}  
+%td.number {{view.content.openPrice}}        
+%td.number {{view.content.closePrice}}  
+%td.number {{view.content.profit}}  
+%td.number {{view.content.prettyReturn}}%  

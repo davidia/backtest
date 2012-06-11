@@ -50,6 +50,12 @@ window.Backtest.SliderView = Em.View.extend(window.Backtest.JQWidget,
   tagName: "div"
   sliding: false
 
+  didInsertElement: ->
+    this._super()
+    h = $('.ui-slider-handle')
+    h.first().addClass('m0-handle')
+    h.last().addClass('m1-handle')
+
   start: ( event, ui ) -> @set('sliding',true)
   stop: ( event, ui ) -> @set('sliding',false)
 

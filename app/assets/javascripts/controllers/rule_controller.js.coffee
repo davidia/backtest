@@ -2,7 +2,7 @@
 
 window.Backtest.ruleController = Ember.Object.create(
   fetch: ->       
-    $.get('closes',{symbol: this.get('symbol'),years: this.get('years')},(data)=>
+    $.get('/backtest/closes',{symbol: this.get('symbol'),years: this.get('years')},(data)=>
       @prices = data['prices']
       @rawdates = data['dates']
 
@@ -82,8 +82,14 @@ window.Backtest.ruleController = Ember.Object.create(
   drawTrade: (trade) ->
     visiblePrices = @visible(@prices)
     oi = @rawToVis trade.openIndex    
+    id = "path" + trade.get('id')
+    @graph.append("svg:path").attr("d", @line(oi)(@prices.slice(trade.openIndex,trade.closeIndex+1)),trade.openIndex).attr("class","trade " + trade.direction.toLowerCase())
+    .attr("id",id)      
+    $('#'+id).hover(
+      (evt)-> $(evt.target).addClass('selected'),
+      (evt)-> $(evt.target).removeClass('selected')
+      )
 
-    @graph.append("svg:path").attr("d", @line(oi)(@prices.slice(trade.openIndex,trade.closeIndex+1)),trade.openIndex).attr("class", "trade " + trade.direction.toLowerCase())      
 
   simulate: ->
     trades = window.TA.xover(@burnIn(),@rawdates,@prices,@maSeries[0],@maSeries[1],@get('long'),@get('short'))    

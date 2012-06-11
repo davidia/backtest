@@ -23,8 +23,9 @@ view = Backtest.MainView.create(
   controller: Backtest.ruleController
 )
 
-class Trade
-  constructor: (direction,i,d,p) ->
+Backtest.Trade = Ember.Object.extend(
+  open: (id,direction,i,d,p) ->
+      @id = id
       @direction = direction
       @openPrice = p[i].toFixed(2)
       @openDate = d[i]              
@@ -34,9 +35,13 @@ class Trade
     @closeIndex = i
     @closeDate = d[i]
     @closePrice = p[i].toFixed(2)
-    @profit = (@sign * (@closePrice - @openPrice)).toFixed(2)
+    @profit = (@sign *  (@closePrice - @openPrice)).toFixed(2)    
     @return = @profit / @openPrice
-    @dispReturn = @return.toFixed(2)
+    @prettyReturn = (100 * @return).toFixed(2)
+
+  click: (evt) -> alert('trade here!')
+  )
+
 
 window.TA =
 
@@ -50,7 +55,8 @@ window.TA =
           workingSet.shift()
         results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
       return results
-    xover: (burnin,dates,prices,ma1,ma2,long = true,short = false) ->     
+    xover: (burnin,dates,prices,ma1,ma2,long = true,short = false) ->  
+      id = 0   
       states = _.zip(ma1,ma2).map((a) -> if a[0] > a[1] then 1 else -1 )
       position = 0      
       trades = states.reduce(
@@ -61,8 +67,10 @@ window.TA =
             t = memo[memo.length-1]
             t.close(i,dates,prices)            
           if (position == 0 && (if e == 1 then long else short))
-            position = e            
-            memo.push(new Trade((if e == 1 then "Buy" else "Sell"),i,dates,prices))
+            position = e
+            t = Backtest.Trade.create()   
+            t.open(id++,(if e == 1 then "Buy" else "Sell"),i,dates,prices)        
+            memo.push(t)
           return memo
         ,[])
       
@@ -71,6 +79,8 @@ window.TA =
         t = trades[trades.length-1]
         t.close(prices.length-1,dates,prices)            
       return trades
+
+window.helper = (evt) -> alert(evt)
 
 $(document).ready ->
   stateManager.send('ready')
