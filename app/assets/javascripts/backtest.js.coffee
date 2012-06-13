@@ -11,79 +11,51 @@
 //= require_tree ./states
 //= require_self
 
-# Backtest.stateManager is useful for debugging,
-#but don't use it directly in application code.
-Backtest = window.Backtest
-stateManager = Backtest.stateManager = Backtest.StateManager.create();
-Backtest.initialize(stateManager);
 
 
+
+
+# Loading the app...
+# things to do
+# 1. connect to window history for keeping URL up to date
+
+History = window.History
+  # return false  unless History.enabled
+History.Adapter.bind window, "statechange", ->
+State = History.getState()
+History.log State.data, State.title, State.url
+  
+vars = {}
+hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&")
+i = 0    
+while i < hashes.length
+  hash = hashes[i].split("=")
+  k = hash[0]
+  v = hash[1]    
+    
+  if v.indexOf(',') > -1
+    v = v.split(',').map((x) ->
+        parseInt(x)
+      )
+  else if !isNaN(parseInt v)
+    v = parseInt(v)  
+  if v == 'true' then v = true
+  if v == 'false' then v = false  
+  vars[k] = v
+  i++
+
+for key,value in vars
+  delete vars.key unless (Backtest.RuleController.params.indexOf(key) != -1 and value)
+
+c = Backtest.RuleController.create(vars)
+
+# Create the main view
 
 view = Backtest.MainView.create(
-  controller: Backtest.ruleController
+  controller: c
 )
 
-Backtest.Trade = Ember.Object.extend(
-  open: (id,direction,i,d,p) ->
-      @id = id
-      @direction = direction
-      @openPrice = p[i].toFixed(2)
-      @openDate = d[i]              
-      @openIndex = i  
-      @sign = (if @direction == "Buy" then 1 else -1)
-  close: (i,d,p) ->
-    @closeIndex = i
-    @closeDate = d[i]
-    @closePrice = p[i].toFixed(2)
-    @profit = (@sign *  (@closePrice - @openPrice)).toFixed(2)    
-    @return = @profit / @openPrice
-    @prettyReturn = (100 * @return).toFixed(2)
-
-  click: (evt) -> alert('trade here!')
-  )
-
-
-window.TA =
-
-
-  sma: (data,period) ->
-      workingSet = [];
-      results = [];
-      for n in data
-        workingSet.push(n)
-        if(workingSet.length > period)
-          workingSet.shift()
-        results.push( (workingSet.reduce (s,t) -> s + t) /workingSet.length )
-      return results
-    xover: (burnin,dates,prices,ma1,ma2,long = true,short = false) ->  
-      id = 0   
-      states = _.zip(ma1,ma2).map((a) -> if a[0] > a[1] then 1 else -1 )
-      position = 0      
-      trades = states.reduce(
-        (memo,e,i)=>
-          if i < burnin then return memo
-          if(position != 0 && position != e)
-            position = 0
-            t = memo[memo.length-1]
-            t.close(i,dates,prices)            
-          if (position == 0 && (if e == 1 then long else short))
-            position = e
-            t = Backtest.Trade.create()   
-            t.open(id++,(if e == 1 then "Buy" else "Sell"),i,dates,prices)        
-            memo.push(t)
-          return memo
-        ,[])
-      
-      #close out the last trade if it's still open
-      if(position != 0)
-        t = trades[trades.length-1]
-        t.close(prices.length-1,dates,prices)            
-      return trades
-
-window.helper = (evt) -> alert(evt)
-
 $(document).ready ->
-  stateManager.send('ready')
   view.appendTo('#main')
   view.fetch()
   

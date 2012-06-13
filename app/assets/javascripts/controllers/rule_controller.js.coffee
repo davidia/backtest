@@ -1,16 +1,76 @@
 
 
-window.Backtest.ruleController = Ember.Object.create(
-  fetch: ->       
+window.Backtest.RuleController = Ember.Object.extend(
+  
+
+  params: ["symbol","capital","long","short","years","ma"]
+  # 
+  # Bound properties
+  symbol: "MCD"
+  capital: 10000  
+  
+  capitalChanged: Ember.observer( ->
+      @storeURL()
+    ,"capital" ) 
+
+  long: true
+  short: true
+
+  longShortChanged: Ember.observer( ->
+      @storeURL()
+      @simulate() 
+    ,"long", "short" ) 
+
+
+  years: 1
+  yearsChanged: Ember.observer( ->
+      @redraw()
+      @storeURL()
+  ,"years" ) 
+    
+  # manage ma array manually
+  ma: [10, 85]
+
+  mas: Ember.computed( (key,value)->
+    if arguments.length == 1
+      @ma
+    else
+      (if(value[i] != @ma[i]) then @setMa(i,value[i])) for i in [0,1]
+    )
+
+  setMa: (index,value) ->
+    @ma[index] = value
+    @createMA index
+    @drawMa index for index in [0,1]
+    @storeURL()
+    window.clearTimeout()
+    window.setTimeout(@simulate.bind(this),100)    
+
+  # The resultant trades for the view
+  trades: null
+
+  storeURL: ->  
+    url = ""
+    url += '&' + key + '=' + @get(key) for key in @params
+    History.replaceState( null , null, '?' + url.substring(1)) 
+
+    # "?symbol=" + @get('symbol') + 
+    #   "&long=" + @get('long') + "&short=" + @get('short') +
+    #   "&ma=" + @ma.toString()  +
+    #   "&capital=" + @get('capital')  + "&years=" + @get('years')  
+    
+
+
+  fetch: ->
     $.get('/backtest/closes',{symbol: this.get('symbol'),years: this.get('years')},(data)=>
       @prices = data['prices']
       @rawdates = data['dates']
 
       parse = d3.time.format("%Y-%m-%d").parse;
-      @dates = @rawdates.map(parse)
-         
+      @dates = @rawdates.map(parse)         
       @redraw()
     )
+    @storeURL()
 
   redraw: ->
     @createMA i for i in [0,1]
@@ -33,7 +93,7 @@ window.Backtest.ruleController = Ember.Object.create(
   maSeries: [null,null]
 
   createMA: (index) ->    
-    @maSeries[index] = window.TA.sma(@prices,@ma[index])
+    @maSeries[index] = Backtest.TALib.sma(@prices,@ma[index])
 
   rawToVis: (i) -> i - (@prices.length - @visibleCount() + 1)
 
@@ -91,46 +151,19 @@ window.Backtest.ruleController = Ember.Object.create(
       )
 
 
-  simulate: ->
-    trades = window.TA.xover(@burnIn(),@rawdates,@prices,@maSeries[0],@maSeries[1],@get('long'),@get('short'))    
+
+    #ma capital ticker long/short
+
+
+  simulate: ->    
+    trades = Backtest.TALib.xover(@burnIn(),@rawdates,@prices,@maSeries[0],@maSeries[1],@get('long'),@get('short'))    
     trades = trades.filter( (t) => (@prices.length - t.openIndex) < @visibleCount() )
     @set('trades',trades)
     d3.selectAll("path.trade").remove()
     @drawTrade trade for trade in trades
 
           
-  symbol: "MCD"
-  capital: 10000
-  trades: null
   
-  long: true
-  short: true
-
-  longShortChanged: Ember.observer( ->
-      @simulate() 
-    ,"long", "short" ) 
-    
-  
-
-  ma: [10, 85]
-
-  mas: Ember.computed( (key,value)->
-    if arguments.length == 1
-      @ma
-    else
-      (if(value[i] != @ma[i]) then @setMa(i,value[i])) for i in [0,1]
-    )
-  
-  years: 1
-  yearsChanged: Ember.observer( ->
-      @redraw()
-  ,"years" ) 
-
-  setMa: (index,value) ->
-    @ma[index] = value
-    @createMA index
-    @drawMa index for index in [0,1]
-    window.clearTimeout()
-    window.setTimeout(@simulate.bind(this),100)    
 )
+
 

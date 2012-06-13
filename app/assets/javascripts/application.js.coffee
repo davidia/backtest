@@ -16,6 +16,8 @@
 //= require ember-data
 //= require_self
 
+//= require jquery.history
+
 //= require backtest
 
 

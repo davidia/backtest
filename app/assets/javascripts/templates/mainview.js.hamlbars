@@ -11,7 +11,7 @@
           .span3
             .l Period
             .btn-group{:'data-toggle' => "buttons-radio"}          
-              {{view Backtest.ButtonView label="1Y" class="active" val=1}}          
+              {{view Backtest.ButtonView label="1Y"  val=1}}          
               {{view Backtest.ButtonView label="2Y"  val=2}}          
               {{view Backtest.ButtonView label="3Y"  val=3}}          
               {{view Backtest.ButtonView label="4Y"  val=4}}          
