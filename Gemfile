@@ -45,7 +45,7 @@ gem "compass_twitter_bootstrap", :git => "git://github.com/vwall/compass-twitter
 gem "ember-rails"
 gem "haml-rails"
 gem "hamlbars" ,:git => 'git://github.com/jamesotron/hamlbars.git'
-
+gem 'thin'
 
 group :development do
   gem 'guard'
