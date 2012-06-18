@@ -5,7 +5,9 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :production do
+  gem 'pg'
+end
 
 
 # Gems used only for assets and not required
@@ -48,5 +50,9 @@ gem "hamlbars" ,:git => 'git://github.com/jamesotron/hamlbars.git'
 group :development do
   gem 'guard'
   gem 'rack-livereload', :git => 'git://github.com/johnbintz/rack-livereload.git'
-  gem 'guard-livereload'
+  gem 'guard-livereload'  
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
