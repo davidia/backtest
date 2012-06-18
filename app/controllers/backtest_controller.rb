@@ -4,6 +4,17 @@ class BacktestController < ApplicationController
   def index
   end
 
+  def signup
+    @user = User.new
+    @user.email = params[:email]
+    if @user.save
+      message='ok'
+    else
+      message='error'
+    end
+    render json: {message: message}
+  end
+
   #http://ichart.finance.yahoo.com/table.csv?s=GRPN&d=5&e=3&f=2012&g=d&a=10&b=4&c=2011&ignore=.csv
   def yahoo_url sym,years
     today = Date.today    

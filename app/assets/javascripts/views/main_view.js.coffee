@@ -6,6 +6,23 @@ window.Backtest.MainView = Ember.View.extend(
   
   didInsertElement: -> 
     $('form').submit( ->false)
+    $('#emailSubmit').click(->
+      $.post('/backtest/signup', email: $('#emailInput').val(),(data) ->
+        if data.message=='ok'
+          $('.modal').modal('hide')
+          $('#alert').html('
+            <div class="alert alert-success">
+              Thank You!
+              <a class="close" data-dismiss="alert" href="#">&times;</a>
+            </div>
+            '
+          )
+
+        else
+          $('#error').text('Please enter a valid email')
+        )
+      )
+    
 
 
   ma0: Ember.computed( (key, value) ->

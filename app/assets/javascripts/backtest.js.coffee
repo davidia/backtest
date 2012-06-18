@@ -33,7 +33,7 @@ while i < hashes.length
   k = hash[0]
   v = hash[1]    
     
-  if v.indexOf(',') > -1
+  if v? and v.indexOf(',') > -1
     v = v.split(',').map((x) ->
         parseInt(x)
       )

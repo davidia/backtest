@@ -1,4 +1,20 @@
-%h1 Moving Average Cross-over
+#alert
+#signup.modal.hide
+  .modal-header
+    %h1 Get Alerts
+  .modal-body
+    %p
+      We are getting ready to lauch our alerts feature. If you would like to be the first to know enter your email address:
+    %form
+      %label Your E-Mail:
+      %input#emailInput(name="email" placeholder="you@domain.com")
+      %button.btn.btn-primary#emailSubmit Keep me posted      
+      #error
+
+  .modal-footer
+    %button.btn(data-dismiss="modal") No thanks
+
+%h2 Moving Average Cross-Over Settings
 .settings.well  
   .row      
     .span9
@@ -42,11 +58,10 @@
                   =surround "<span class='add-on'>Long</span>" , "<span class='add-on'>days</span>" do
                     {{view Ember.TextField id="ma1"  valueBinding="ma1"  placeholder="MA2" class="ma1 input-tini"}}  
     .span2.actions
-      %button.btn.span2.btn-danger Track this rule                  
-      %button.btn.span2.btn-success Share
+      %button.btn.span2.btn-danger(data-toggle="modal" href="#signup") Get Trading Signal Alerts for this Rule                 
 
         
-%h3 Results
+%h2 Results
 %table.table.table-bordered
   %thead
     %tr

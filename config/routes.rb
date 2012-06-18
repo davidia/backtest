@@ -2,6 +2,9 @@ Backtest::Application.routes.draw do
   get "backtest/index"
 
   get "backtest/closes"
+  post "backtest/signup"
+
+  root :to => 'backtest#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,4 +1,4 @@
-%td.dir {{direction}}  
+%td.dir {{view.content.direction}}  
 %td {{view.content.openDate}}  
 %td {{view.content.closeDate}}  
 %td.number {{view.content.openPrice}}        
